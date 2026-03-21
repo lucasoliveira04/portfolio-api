@@ -1,5 +1,10 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
+.idea
+.mvn
+target
+*.iml
+.git
+.gitignore
+README.md
+.env
+.env.prod
+.env.example

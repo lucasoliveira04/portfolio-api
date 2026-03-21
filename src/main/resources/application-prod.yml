@@ -1,0 +1,7 @@
+"%prod":
+  quarkus:
+    datasource:
+      username: ${DB_USER}
+      password: ${DB_PASSWORD}
+      jdbc:
+        url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}

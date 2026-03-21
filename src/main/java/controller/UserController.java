@@ -1,16 +1,36 @@
 package controller;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import dto.ProfileFullDataDTO;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import service.ProfileService;
 
-@Path("/api/user")
+import java.util.UUID;
+
+@Path("/api/profiler")
+@Produces(MediaType.APPLICATION_JSON)
 public class UserController {
 
+    @Inject
+    ProfileService profileService;
+
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getDataProfile(){
-        return "Hello World";
+    @Path("/{id}/all")
+    public Response getAllData(@PathParam("id")UUID id) {
+        if (id == null) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("ID is required")
+                    .build();
+        }
+        try {
+            ProfileFullDataDTO data = profileService.getAllData(id);
+            return Response.ok(data).build();
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(e.getMessage())
+                    .build();
+        }
     }
 }
