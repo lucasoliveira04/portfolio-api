@@ -1,10 +1,10 @@
 quarkus:
   datasource:
     db-kind: postgresql
-    username: postgres
-    password: 1234567
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     jdbc:
-      url: jdbc:postgresql://localhost:5432/portfolio_db
+      url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
 
   hibernate-orm:
     log:
@@ -13,7 +13,7 @@ quarkus:
     schema-management:
       strategy: validate
     database:
-      generation: validate
+      generation: none
 
   flyway:
     migrate-at-start: true
