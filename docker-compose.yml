@@ -5,14 +5,12 @@ services:
     restart: unless-stopped
     mem_limit: 512m
     ports:
-      - "8080:8080"
+      - "8081:8081"
     env_file:
       - .env.prod
-    environment:
-      QUARKUS_PROFILE: prod
     networks:
-      - homelab
+      - database_homelab
 
 networks:
-  homelab:
+  database_homelab:
     external: true

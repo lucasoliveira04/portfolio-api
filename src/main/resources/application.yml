@@ -1,4 +1,8 @@
 quarkus:
+  micrometer:
+    export:
+      prometheus:
+        enabled: true
   datasource:
     db-kind: postgresql
     username: ${DB_USER}
@@ -22,4 +26,4 @@ quarkus:
     repair-at-start: true
 
   http:
-    port: 8080
+    port: 8081
