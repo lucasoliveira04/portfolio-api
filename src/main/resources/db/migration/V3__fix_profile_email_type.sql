@@ -1,0 +1,2 @@
+ALTER TABLE profile_email
+    ALTER COLUMN type TYPE VARCHAR(255) USING type::VARCHAR;

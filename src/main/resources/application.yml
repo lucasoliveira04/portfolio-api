@@ -13,7 +13,7 @@ quarkus:
     schema-management:
       strategy: validate
     database:
-      generation: none
+      generation: validate
 
   flyway:
     migrate-at-start: true
